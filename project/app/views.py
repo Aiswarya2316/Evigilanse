@@ -153,14 +153,6 @@ def user_reg(req):
                 idproof=idproof_number  # Save the extracted Aadhaar number
             )
             data.save()
-
-            # # Send confirmation email
-            # subject = 'Registration details'
-            # message = f'Your account username is {name} and password is {password}'
-            # from_email = settings.EMAIL_HOST_USER
-            # recipient_list = [email]
-            # send_mail(subject, message, from_email, recipient_list, fail_silently=False)
-
             messages.success(req, "Registration successful! You can now log in.")
             return redirect(login)  # Replace 'login' with the name of your login URL pattern
 
@@ -181,18 +173,6 @@ def userhome(req):
     
 def aboutus(req):
     return render(req,'user/about.html')
-
-# def usersearch(req):
-#     if 'user' in req.session:
-#         query = req.GET.get('query') 
-#         products = []
-#         if query:
-#             products = User.objects.filter(name__icontains=query)
-            
-#         return render(req, 'user/usersearch.html', {'products': products, 'query': query})
-#     else:
-#         return redirect(login)
-    
 
 
 def submit_complaint(req):
@@ -291,19 +271,21 @@ def userhistory(req):
         return redirect(login)
 
 
-def chat(req,id):
+def chat(req, id):
     if 'user' in req.session:
-        complaint=Complaint.objects.get(pk=id)
-        data1 = Message.objects.filter(complaint=complaint)
+        complaint = Complaint.objects.get(pk=id)
+        data1 = Message.objects.filter(complaint=complaint).order_by('timestamp')
 
-        if req.method=='POST':
-            msg=req.POST.get('content')
+        if req.method == 'POST':
+            msg = req.POST.get('content')
             if msg:
-                data=Message.objects.create(complaint=complaint,content=msg)
+                sender = req.user  # Get the logged-in user
+                data = Message.objects.create(complaint=complaint, sender=sender, content=msg)
                 data.save()
-        return render(req,'user/chat.html',{'data1':data1})
+        return render(req, 'user/chat.html', {'data1': data1, 'user': req.user})
     else:
-        return redirect(login) 
+        return redirect(login)
+
     
 def viewpolices(req):
     
@@ -519,55 +501,6 @@ def addstation(req):
 
 
 
-###Ask Anything
-def message(req):
-    if 'user' in req.session:  # Check if the user is logged in
-        user_email = req.session.get('user')  # Get the user's email from the session
-        user = User.objects.get(Email=user_email)  # Retrieve the user object using email
-        
-        police_officers = Police.objects.all()  # Fetch all police officers
 
-        # Fetch all messages where the user or police is involved
-        data1 = Chat.objects.filter(user=user).order_by('id')
-
-        if req.method == 'POST':
-            msg = req.POST.get('content')  # Get the message content
-            police_id = req.POST.get('police_id')  # Get the police officer's ID
-            if msg and police_id:
-                police = Police.objects.get(pk=police_id)  # Retrieve the police officer
-                # Create a new chat message
-                Chat.objects.create(user=user, police=police, content=msg)
-
-        return render(req, 'user/message.html', {
-            'data1': data1,
-            'police_officers': police_officers,
-        })
-    else:
-        return redirect('login')  # Redirect to login if the user is not logged in
-
-
-
-
-def messagee(req):
-    if 'police' in req.session:  # Check if the police officer is logged in
-        police_email = req.session.get('police')  # Get the police officer's email from the session
-        police = Police.objects.get(Email=police_email)  # Retrieve the police object
-        
-        # Fetch all messages where the police officer or user is involved
-        data1 = Chat.objects.filter(police=police).order_by('id')
-
-        if req.method == 'POST':
-            msg = req.POST.get('content')  # Get the message content
-            user_id = req.POST.get('user_id')  # Get the user's ID from the form
-            if msg and user_id:
-                user = User.objects.get(pk=user_id)  # Retrieve the user object
-                # Create a new chat message
-                Chat.objects.create(police=police, user=user, content=msg)
-
-        return render(req, 'police/messagee.html', {
-            'data1': data1,
-        })
-    else:
-        return redirect('login')  # Redirect to login if the police officer is not logged in
 
 

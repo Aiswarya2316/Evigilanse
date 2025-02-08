@@ -16,7 +16,7 @@ path('userhistory',views.userhistory, name='userhistory'),
 path('chat/<int:id>', views.chat, name='chat'),
 path('contactus',views.contactus),
 path('about/', views.aboutus, name='about'),
-path('message/', views.message, name='message'),
+# path('message/', views.message, name='message'),
 path('viewpolices',views.viewpolices),
 
 
@@ -34,7 +34,7 @@ path('viewuser',views.viewuser,name='viewuser'),
 path("complainthistory/", views.registered_complaints, name="complainthistory"),
 path('delete/<int:id>',views.delete),
 path('chats/<int:id>', views.chats, name='chats'),
-path('messagee/', views.messagee, name='messagee'),
+# path('messagee/', views.messagee, name='messagee'),
 path('usersearch/', views.usersearch, name='usersearch'),
 
 

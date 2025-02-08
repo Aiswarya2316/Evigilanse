@@ -44,10 +44,12 @@ class Chat(models.Model):
     
 
 class Message(models.Model):
-    complaint=models.ForeignKey(Complaint, on_delete=models.CASCADE)
+    complaint = models.ForeignKey(Complaint, on_delete=models.CASCADE)
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)  # Add this to track sender
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Message for Complaint {self.complaint.id} by {self.complaint.user.username}"
+        return f"Message for Complaint {self.complaint.id} by {self.sender.username}"
+

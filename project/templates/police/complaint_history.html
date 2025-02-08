@@ -137,35 +137,7 @@
                     </li>
                 </ul>
 
-                      <!-- Search bar -->
-                <!-- <div class="search-bar">
-                    <span class="search-icon"><i class="bi bi-search"></i></span>
-                    <form method="post" action="{% url 'usersearch' %}">
-                        {% csrf_token %}
-                        <input class="form-control" type="text" name="query" placeholder="Search for...">
-                        <button type="submit" class="btn btn-primary" ></button>
-                    </form>
-                </div> -->
-
-                <!-- Profile Dropdown -->
-                <!-- <div class="dropdown ms-3">
-                    <button class="btn btn-link dropdown p-0 border-0" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../static/images/profile.png" alt="Profile" class="profile-img">
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                        <li class="text-center">
-                            <img src="../static/images/profile.png" alt="User" class="my-2">
-                            <div style="color: white;"><strong>User Name</strong></div>
-                        </li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <a class="dropdown-item" href="../profile">Edit Profile</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="../logout">Logout</a>
-                        </li>
-                    </ul>
-                </div> -->
+                      
             </div>
         </div>
     </nav>
@@ -178,8 +150,7 @@
                     <th>Subject</th>
                     <th>Description</th>
                     <th>Status</th>
-                    <th>Action</th>
-                    {% comment %} <th>Date Filed</th> {% endcomment %}
+                    
                 </tr>
             </thead>
             <tbody>
@@ -188,8 +159,7 @@
                     <td>{{ complaint.id }}</td>
                     <td>{{ complaint.description }}</td>
                     <td>{{ complaint.status }}</td>
-                    <td><a class="btn btn-primary" href="../chats/{{complaint.pk}}">Chat</a>
-                    {% comment %} <td><a id="btn" href="../messagee">Ask Anything</a></td> {% endcomment %}
+                    
 
                 </tr>
                 {% empty %}
