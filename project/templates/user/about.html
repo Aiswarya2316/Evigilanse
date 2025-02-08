@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CrimeLog</title>
+
+    <!-- Bootstrap CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation Bar */
+       
+#nav {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #343a40;
+    height: 80px;
+}
+
+.navbar-brand img {
+    max-height: 60px;
+}
+
+.navbar .nav-link {
+    color: #fff;
+    transition: color 0.3s ease;
+    margin: 10px;
+}
+
+.navbar .nav-link:hover {
+    color: #91aafa;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+.search-input-group {
+display: flex;
+align-items: center;
+border: 1px solid #ced4da;
+border-radius: 25px;
+overflow: hidden;
+background-color: #fff;
+width: 300px; /* Adjust width as needed */
+}
+
+/* .search-input-group .search-icon {
+position: absolute;
+left: 15px;
+color: #6c757d;
+font-size: 1rem;
+pointer-events: none;
+} */
+
+.search-input-group form {
+display: flex;
+align-items: center;
+width: 100%;
+}
+
+.search-input-group input {
+flex: 1;
+border: none;
+padding: 10px 10px 10px 40px; /* Padding to create space for the icon */
+outline: none;
+font-size: 0.9rem;
+}
+
+.search-input-group button {
+background-color: #007bff;
+border: none;
+color: #fff;
+padding: 10px 20px;
+font-size: 0.9rem;
+cursor: pointer;
+border-top-right-radius: 25px;
+border-bottom-right-radius: 25px;
+transition: background-color 0.3s ease;
+}
+
+.search-input-group button:hover {
+background-color: #0056b3;
+}
+
+.search-input-group input:focus {
+border: none;
+outline: none;
+box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Profile dropdown styles */
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    background-color: #343a40;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+    background-color: #2c2727; /* Black background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu .dropdown-item {
+    color: #fff; /* White text */
+    
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #4d73f1;
+    color: #fff;
+}
+
+
+
+        /* About Section */
+        .about-section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 900px;
+        }
+
+        .about-section h1 {
+            color: #1E90FF;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-box i {
+            font-size: 24px;
+            color: #1E90FF;
+            margin-right: 15px;
+        }
+
+        .feature-list li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1E90FF;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 20px;
+            }
+
+            .icon-box i {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="../userhome">
+                <img id="logo" src="../static/images/images.jpg" alt="Evigilance">
+            </a>
+
+            <!-- Toggler for smaller screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../submit_complaint">Give Complaint</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../userhistory">Registered Complaint</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../viewpolices">View Officers</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="../message">Ask Anything</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contactus">Contact </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about">About </a>
+                    </li>
+                    
+                </ul>
+
+                      <!-- Search bar -->
+                        
+                      <div class="search-input-group">
+                        <!-- <span class="search-icon"><i class="bi bi-search"></i></span> -->
+                        <form method="post" action="{% url 'police_search' %}">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="query" placeholder="Search by name or email...">
+                            <button class="btn btn-primary" id="srch-btn" type="submit">Search</button>
+                        </form>
+                    </div>
+
+                <!-- Profile Dropdown -->
+                <div class="dropdown ms-3">
+                    <button class="btn btn-link dropdown p-0 border-0" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../static/images/profile.png" alt="Profile" class="profile-img">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li class="text-center">
+                            <img src="../static/images/profile.png" alt="User" class="my-2">
+                            <div style="color: white;"><strong>User Name</strong></div>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="../userprofile">View Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h1>About Evigilance</h1>
+        <p class="text-center">Your Trusted Online Police Complaint Registration Platform</p>
+
+        <div class="icon-box">
+            <i class="bi bi-person-badge"></i>
+            <p><strong>Who We Are:</strong> At <strong>CrimeLog</strong>, we simplify crime reporting, making it easy and confidential.</p>
+        </div>
+
+        <div class="icon-box">
+            <i class="bi bi-shield-lock"></i>
+            <p><strong>What We Do:</strong> We provide a secure platform for reporting various crimes such as theft, fraud, cybercrime, and more.</p>
+        </div>
+
+        <h3 class="mt-4">Why Choose Evigilance?</h3>
+        <ul class="feature-list">
+            <li><i class="bi bi-check-circle text-primary"></i> <strong>Simple & Convenient:</strong> Register complaints easily.</li>
+            <li><i class="bi bi-shield-check text-primary"></i> <strong>Confidential:</strong> Your privacy is our priority.</li>
+            <li><i class="bi bi-clock text-primary"></i> <strong>24/7 Availability:</strong> Report crimes anytime, anywhere.</li>
+            <li><i class="bi bi-graph-up text-primary"></i> <strong>Real-time Tracking:</strong> Get instant case updates.</li>
+        </ul>
+
+        <h3 class="mt-4">Our Vision</h3>
+        <p>We aim to create a safer world by making crime reporting accessible and efficient for everyone.</p>
+
+        <h3 class="mt-4">Get in Touch</h3>
+        <p>For any assistance, visit our <a href="../contactus" class="text-primary">Contact Page</a>.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Evilgilance. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Secure Access</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 12px;
+            padding-left: 40px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-field input:focus {
+            border-color: #1e3c72;
+        }
+
+        .input-field i {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .button input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #1e3c72;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button input:hover {
+            background: #2a5298;
+        }
+
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: left;
+        }
+        .alert-warning { background: #fff4e5; color: #cc8400; }
+        .alert-error { background: #f8d7da; color: #842029; }
+        .alert-success { background: #d4edda; color: #155724; }
+        
+        .login-signup {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .login-signup a {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .login-signup a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Login</div>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="input-field">
+                <i class="uil uil-envelope icon"></i>
+                <input type="text" name="Email" id="Email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-field">
+                <i class="uil uil-lock icon"></i>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="button">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+
+        <div class="login-signup">
+            Not a member? <a href="../user_reg">Signup Now</a>
+        </div>
+    </div>
+</body>
+</html>
